@@ -7,7 +7,7 @@ module BracketBalancer
     begin
       brackets_balanced_logic(str)
     rescue NoMethodError => e
-      'param need to be String'
+      'param should to be String'
     end
   end
 
@@ -41,6 +41,4 @@ end
 
 include BracketBalancer
 
-p brackets_balanced?("(){}")
-p brackets_balanced?("{({{}})}")
-p brackets_balanced?('{}{')
+p brackets_balanced?('{() dfd}')
