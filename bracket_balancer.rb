@@ -1,13 +1,24 @@
 module BracketBalancer
+  module Errors
+    class NoOperationSpecified < StandardError
+      def initialize(param)
+        msg = "Too long input string"
+        super(msg)
+      end
+    end
+  end
 
   OPENING_BRACKETS = '([{<'
   CLOSING_BRACKETS = ')]}>'
 
   def brackets_balanced?(str)
     begin
+      raise Errors::NoOperationSpecified unless str.size <= 8
       brackets_balanced_logic(str)
     rescue NoMethodError => e
       'param should to be String'
+    rescue NoOperationSpecified => e
+      'You shold input string with len less 8'
     end
   end
 
